@@ -1,0 +1,30 @@
+{
+  "name": "@kumologica/kumologica-contrib-excel",
+  "version": "0.0.1",
+  "description": "Node for parsing or generating an xlsx file",
+  "repository": {
+    "type": "git",
+    "url": "githttps://github.com/KumologicaHQ/kumologica-contrib-xlsx.git"
+  },
+  "keywords": [
+    "kumologica",
+    "platform",
+    "excel",
+    "xlsx"
+  ],
+  "scripts": {
+    "pub": "npm publish --access public"
+  },
+  "dependencies": {
+    "@kumologica/devkit": "latest",
+    "json-as-xlsx": "^2.5.3",
+    "xlsx": "^0.18.5"
+  },
+  "kumologica": {
+    "nodes": {
+      "Excel": "lib/Excel.js"
+    }
+  },
+  "author": "Kumologica Team",
+  "license": "Apache 2.0"
+}

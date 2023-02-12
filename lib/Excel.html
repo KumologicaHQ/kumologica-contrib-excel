@@ -1,0 +1,94 @@
+<script type="text/x-kumologica" data-template-name="Excel">
+
+  <div class="kumo-window">
+
+    <!-- Display name -->
+    <div class="kumo-section">
+      <div class="kumo-row">
+        <label class="kumo-row-label" for="node-input-name"> <span>Display Name</span></label>
+        <input class="kumo-row-editable" type="text" id="node-input-name" placeholder="Name"/>
+      </div>
+    </div>
+
+    <!-- General Settings -->
+    <div class="kumo-section-title">General</div>
+    <div class="kumo-section"> 
+      
+      <div class="kumo-row-with-margin" id="operation">
+        <label class="kumo-row-label" for="node-input-operation">Operation</label>
+        <select class="kumo-row-editable" type="text" id="node-input-operation">
+          <option value="read">Read</option>
+          <option value="write">Write</option>
+        ;
+        </select>
+      </div>
+      <div class="kumo-row-with-margin" id="content" >
+        <label class="kumo-row-label" for="node-input-content">Content</label>
+        <input class="kumo-row-editable" type="text" id="node-input-content" placeholder="Data to be filled in the sheet"/>
+      </div>
+
+      </div>
+  </div>
+  
+</div>
+
+</script>
+
+<script type="text/javascript">
+  App.nodes.registerType('Excel', {
+    category: 'Transformation',
+    icon: 'kumo-excel.png',
+    color: '#4CAF50',
+    defaults: {
+      name: { value: 'Excel' },
+      operation : { value: 'read'},
+      content: { value: '',templateable: true, required: true}
+    },
+    inputs: 1,
+    outputs: 1,
+    label: function () {
+      return this.name || 'Excel';
+    },
+    oneditprepare: function(){
+    }
+  });
+</script>
+
+
+<script type="text/x-kumologica" data-help-name="Excel">
+    <h4> Description </h4>
+    <p>Excel node generates universally unique identifier.</p>
+   
+     <h4> Properties </h4>
+     <ul>
+     <li><i>Content</i> - (Required). XLSX data be passed as a Buffer content when choosing the read operation. For write operation the content should be JSON with a specific data structure. Example:
+      <code>[
+        {
+          sheet: "Adults",
+          columns: [
+            { "label": "User", value: "User" },
+            { "label": "Age", value: "Age" },
+            { "label": "Phone", value: "Phone" }
+          ],
+          content: [
+            { "User": "Andrea", "Age": 20, "Phone": "11111111" },
+            { "User": "Luis", "Age": 21, "Phone": "12345678" }
+          ]
+        }]</code>
+     </li>
+     </ul>
+     
+     <h4> Throws </h4>
+     <ul>
+       <li>ExcelError</li>
+     </ul>
+     
+     
+     <h4> Returns </h4>
+     Payload will be overwritten by this node. For read operation the node returns a transformed JSON payload and for write operation the node returns a buffer content.
+     None of the variables will be overwritten or enriched by this node. Response from the node can be accessed using <code>msg.payload</code>.
+     
+     <h4> More info </h4>
+     <a href="https://docs.kumologica.com/docs/references/Excel.html">Kumologica Documentation</a>
+</script>
+
